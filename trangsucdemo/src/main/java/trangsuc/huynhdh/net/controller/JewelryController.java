@@ -73,6 +73,7 @@ public class JewelryController {
 		model.addAttribute("totalPageCount", totalPageCount);
 		model.addAttribute("baseUrl", baseUrl);
 		model.addAttribute("aass", pages);
+		request.getSession().setAttribute("jewelrylst", null);
 
 		return "jewelry";
 	}
