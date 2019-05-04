@@ -23,74 +23,77 @@
 		</th:block>
 
 		<th:block th:unless="${#lists.isEmpty(aass.pageList)}">
-		<nav class="row justify-content-center wow fadeIn"
-		data-wow-delay="0.2s">
-		<div class="row">
-				<table class="table table-bordered table-hover">
-					<thead>
-						<tr>
-							<th>No</th>
-							<th>Group</th>
-							<th>Type</th>
-							<th>Name</th>
-							<th>Price</th>
-							<th>description</th>
-							<th>image</th>
-							<th>collection</th>
-							<th>stonetype</th>
-							<th>stonecolor</th>
-							<th>stoneshape</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr th:each="contact,iterStat : ${aass.pageList}">
-							<td th:text="${contact.id}"></td>
-							<td th:text="${contact.group}"></td>
-							<td th:text="${contact.type}"></td>
-							<td th:text="${contact.name}"></td>
-							<td th:text="${contact.price}"></td>
-							<td class="textOvf" style="width: 100px;" th:text="${contact.description}"></td>
-							<td><img class="img-thumbnail" alt="Cinque Terre" width="304" height="236" th:src="@{${'/images/' + contact.image}}"/></td>
-							<td th:text="${contact.collection}"></td>
-							<td th:text="${contact.stonetype}"></td>
-							<td th:text="${contact.stonecolor}"></td>
-							<td th:text="${contact.stoneshape}"></td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		<ul class="pagination">
-			<li
-				th:class="${currentIndex == 1}? 'page-item disabled' : 'page-item'">
-				<a class="page-link" th:href="@{/jewelry}">First</a>
-			</li>
-			<li
-				th:class="${currentIndex == 1}? 'page-item disabled': 'page-item' ">
-				<a class="page-link" aria-label="Previous"
-				th:href="@{|${baseUrl}${currentIndex - 1}|}"
-				title='Go to previous page'><span aria-hidden="true">«</span>
-					<span class="sr-only">Previous</span></a>
-			</li>
-			<li th:each="item : ${#numbers.sequence(beginIndex,endIndex)}"
-				th:class="${item == currentIndex ? 'page-item active' :'page-item' }">
-				<a class="page-link" th:href="@{|${baseUrl}${item}|}"> <span
-					th:text='${item}'>1</span>
-			</a>
-			</li>
-			<li
-				th:class="${currentIndex == totalPageCount}? 'page-item disabled': 'page-item'">
-				<a class="page-link" aria-label="Next"
-				th:href="@{|${baseUrl}${currentIndex + 1}|}" title='Go to next page'><span
-					aria-hidden="true">»</span> <span class="sr-only">Next</span></a>
-			</li>
-			<li
-				th:class="${currentIndex == totalPageCount}? 'page-item disabled':'page-item'">
-				<a class="page-link" th:href="@{|${baseUrl}${totalPageCount}|}">Last</a>
-			</li>
-		</ul>
-	</nav>
-	
-			
+			<nav class="row justify-content-center wow fadeIn"
+				data-wow-delay="0.2s">
+				<div class="row">
+					<table id="table" class="table table-bordered table-intel table-hover">
+						<thead>
+							<tr>
+								<th>No</th>
+								<th>Group</th>
+								<th class="filter">Type</th>
+								<th>Name</th>
+								<th>Price</th>
+								<th>description</th>
+								<th>image</th>
+								<th>collection</th>
+								<th>stonetype</th>
+								<th>stonecolor</th>
+								<th>stoneshape</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="contact,iterStat : ${aass.pageList}">
+								<td th:text="${contact.id}"></td>
+								<td th:text="${contact.group}"></td>
+								<td th:text="${contact.type}"></td>
+								<td th:text="${contact.name}"></td>
+								<td th:text="${contact.price}"></td>
+								<td class="textOvf" style="width: 100px;"
+									th:text="${contact.description}"></td>
+								<td><img class="img-thumbnail" alt="Cinque Terre"
+									th:src="@{${'/images/' + contact.image}}" /></td>
+								<td th:text="${contact.collection}"></td>
+								<td th:text="${contact.stonetype}"></td>
+								<td th:text="${contact.stonecolor}"></td>
+								<td th:text="${contact.stoneshape}"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<ul class="pagination">
+					<li
+						th:class="${currentIndex == 1}? 'page-item disabled' : 'page-item'">
+						<a class="page-link" th:href="@{/jewelry}">First</a>
+					</li>
+					<li
+						th:class="${currentIndex == 1}? 'page-item disabled': 'page-item' ">
+						<a class="page-link" aria-label="Previous"
+						th:href="@{|${baseUrl}${currentIndex - 1}|}"
+						title='Go to previous page'><span aria-hidden="true">«</span>
+							<span class="sr-only">Previous</span></a>
+					</li>
+					<li th:each="item : ${#numbers.sequence(beginIndex,endIndex)}"
+						th:class="${item == currentIndex ? 'page-item active' :'page-item' }">
+						<a class="page-link" th:href="@{|${baseUrl}${item}|}"> <span
+							th:text='${item}'>1</span>
+					</a>
+					</li>
+					<li
+						th:class="${currentIndex == totalPageCount}? 'page-item disabled': 'page-item'">
+						<a class="page-link" aria-label="Next"
+						th:href="@{|${baseUrl}${currentIndex + 1}|}"
+						title='Go to next page'><span aria-hidden="true">»</span> <span
+							class="sr-only">Next</span></a>
+					</li>
+					<li
+						th:class="${currentIndex == totalPageCount}? 'page-item disabled':'page-item'">
+						<a class="page-link" th:href="@{|${baseUrl}${totalPageCount}|}">Last</a>
+					</li>
+				</ul>
+			</nav>
+
+
 		</th:block>
 	</div>
 	<!-- /.container -->
